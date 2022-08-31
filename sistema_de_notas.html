@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sistema de notas</title>
+    <style>
+        *{
+            margin:0%;
+            padding:0%;
+        }
+        body{
+            background-color: rgb(3, 2, 21);
+        }
+        #fundo{
+            background-color: rgb(145, 145, 145);
+            width: 100%;
+            display:flex;  
+            height: 400px;          
+        }
+        .texto{
+            background-color:rgb(50, 160, 138);
+            text-align: center;
+            font-size: 40pt;
+        }  
+        .h2{
+            text-align: center;
+            font-size:17pt;
+            color: white;
+            margin-top:50px;
+            margin-bottom: 50px;
+        }
+        
+        	.num1,.num2,.num3,.nota1,.nota2{
+            text-align: center;
+            font-size: 10pt;
+            width: 200px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        .calcular,.precisatirar{
+            background-color:rgb(67, 67, 67);
+            color: rgb(106, 248, 255);
+            font-size: 20pt;
+            width:200px;
+            height: 100px;
+            margin-left: 20px;
+            position: absolute;
+
+        }
+        .calcular:active,.precisatirar:active{
+            border-color: white;
+            color: rgb(7, 250, 217);
+        }
+        .calcular:hover{
+             background-color:rgb(88, 89, 89);
+        }
+        #mediaaluno{
+            text-align: center;
+            width:618px;
+            height:30px;
+            padding:10px;
+            background-color:rgb(176, 176, 176);
+            margin-top:10px;
+            margin-left: 10px;
+        }
+        #precisade{
+            text-align: center;
+            width:400px;
+            height:30px;
+            padding:10px;
+            background-color:rgb(176, 176, 176);
+            margin-top:10px;
+            margin-bottom:200px;
+            margin-left: 10px;
+        }
+        
+        .hr2{
+            margin-top: 60px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="texto">notas</h1>
+    <h2 class="h2">informe sua 1ª, 2ª e 3ª nota para saber se está aprovado ou não</h2>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <section>
+        <div>
+            <input class="num1" type="number" placeholder="nota 1">
+            <input class="num2" type="number" placeholder="nota 2">
+            <input class="num3" type="number" placeholder="nota 3">
+            <button class="calcular" onclick="calcular()" >calcular</button>
+            <h1 id="mediaaluno" ></h1>
+        </div>
+    </section>
+   
+    <hr class="hr2">
+    <h2 class="h2">
+        informe a 1ª e a 2ª nota para saber qual a nota minima que você precisa tirar para ficar com media 7
+    </h2>
+
+    <section>
+        <div>
+            <input class="nota1" type="number" placeholder="nota 1">
+            <input class="nota2" type="number" placeholder="nota 2">
+            <button class="precisatirar" onclick="precisa()" >calcular</button>
+            <h1 id="precisade" ></h1>
+        </div>
+    </section>
+    <script>
+        
+        function calcular(){
+            var num1 = document.querySelector(".num1").value;
+            var num2 = document.querySelector(".num2").value;
+            var num3 = document.querySelector(".num3").value;
+
+            var resultado = (parseInt(num1) + parseInt(num2) + parseInt(num3))/3;
+
+            (resultado >= 7)?  document.querySelector("#mediaaluno").innerHTML = "você está aprovado"
+             : document.querySelector("#mediaaluno").innerHTML = "você está reprovado";   
+        }
+
+        function precisa(){
+            var nota1 = document.querySelector(".nota1").value;
+            var nota2 = document.querySelector(".nota2").value;
+            var soma = (parseInt(nota1) + parseInt(nota2));
+            var precisade = 21 - soma;
+            
+            document.querySelector("#precisade").innerHTML = "você precisa tirar :" + precisade;
+        }
+    </script>
+</body>
+
+</html>
